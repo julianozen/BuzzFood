@@ -29,21 +29,14 @@ from google.appengine.api import urlfetch
 class BaseHandler(webapp2.RequestHandler):
     # def render(self, template, **kw):
     #     self.response.out.write(render_str(template, **kw))
-
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
-
-
-
 
 class MainHandler(BaseHandler):
     def get(self):
         self.write('landing page!')
 
-
-
 class SearchByCodeHandler(BaseHandler):
-
     def get(self):
         productid = self.request.get('q')
         response = FoodCatalog.query(FoodCatalog.productid == productid).fetch()
@@ -60,7 +53,6 @@ class SearchByCodeHandler(BaseHandler):
 
                         }
             results.append(json_result)
-
         self.response.out.write(json.dumps(results))
 
 
@@ -69,7 +61,6 @@ class SearchByCodeHandler(BaseHandler):
 
 
 class SearchByTextHandler(BaseHandler):
-
     def get(self):
         name = str(self.request.get('q')).lower()
         print name
@@ -86,7 +77,6 @@ class SearchByTextHandler(BaseHandler):
                             'quantity':food.quantity,
                         }
             results.append(json_result)
-
         self.response.out.write(json.dumps(results))
 
 
@@ -96,7 +86,6 @@ class SearchByTextHandler(BaseHandler):
 
 # http://localhost:11080/time?q=04963406&instruction_count=1
 class TimerHandler(BaseHandler):
-
     def get(self):
         productid = self.request.get('q')
         instruction_count = int(self.request.get('instruction_count'))
@@ -108,47 +97,25 @@ class TimerHandler(BaseHandler):
 
         # Send commands to core
         command = 't'+time+"|p"+power
-
-
         self.response.out.write(json.dumps(response))
-
-
-
-
-
-
 
 
 class StartHandler(BaseHandler):
-
     def get(self):
         response = {'status':'succuess'}
-
         # Send commands to core
-
-
         self.response.out.write(json.dumps(response))
-
-
 
 
 class ClearHandler(BaseHandler):
-
     def get(self):
         response = {'status':'succuess'}
 
         # Send commands to core
-
-
         self.response.out.write(json.dumps(response))
 
 
-
-
-
-
 class InstructionSender(webapp2.RequestHandler):
-
     def get(self):
         name = "Nuts"
         productid = "0090075140053"
@@ -177,9 +144,6 @@ class InstructionSender(webapp2.RequestHandler):
             pass
 
 
-
-
-
 class FoodCatalog(ndb.Model):
     productid = ndb.StringProperty(required=True)
     name = ndb.StringProperty(required=True)
@@ -191,11 +155,6 @@ class FoodCatalog(ndb.Model):
     nutrition_info = ndb.JsonProperty(required=True, default=[])
     quantity = ndb.IntegerProperty(required=True)
 
-
-
-
-
-
 app = webapp2.WSGIApplication([
     ('/?', MainHandler,),
     ('/code/?', SearchByCodeHandler,),
@@ -204,7 +163,4 @@ app = webapp2.WSGIApplication([
     ('/start/?', StartHandler,),
     ('/add/?', InstructionSender,),
     ('/clear/?',ClearHandler)
-
-
-
 ], debug=True)
