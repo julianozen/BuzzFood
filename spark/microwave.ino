@@ -23,12 +23,12 @@ void setup()
     but5 = D5;
     but6 = D6;
     but7 = D7;
-    but8 = D8;
-    but9 = A0;
-    butTime = A1;
-    butPower = A2;
-    butStop = A3;
-    butStart = A4;
+    but8 = A0;
+    but9 = A1;
+    butTime = A2;
+    butPower = A3;
+    butStop = A4;
+    butStart = A5;
     
     // Configure the pins to be outputs
     pinMode(but0, OUTPUT);
@@ -266,13 +266,13 @@ void splitArgStringToArray(String arguments, String *target, char delim){
     int idx = arguments.indexOf(delim);
 
     while (idx != -1) {
-    	String arg = arguments.substring(beginIdx, idx);
-    	arg.trim();
-    	target[numArgs] = arg;
+        String arg = arguments.substring(beginIdx, idx);
+        arg.trim();
+        target[numArgs] = arg;
 
-    	beginIdx = idx + 1;
-    	idx = arguments.indexOf(delim, beginIdx);
-    	++numArgs;
+        beginIdx = idx + 1;
+        idx = arguments.indexOf(delim, beginIdx);
+        ++numArgs;
     }
 
     // Single or last parameter
