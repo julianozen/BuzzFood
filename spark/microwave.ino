@@ -15,31 +15,31 @@ void setup()
     Spark.function("instrTest", encodedInstrTest);
    
     //assign each button to an output
-    //but0 = D0;
-   // but1 = D1;
-//    but2 = D2;
-    but3 = D0;
-//    but4 = D4;
-  //  but5 = D5;
-//    but6 = D6;
- //   but7 = D7;
-  //  but8 = A7;
-  but9 = D7;
-    butTime = D1;
-    butPower = D2;
-    butStop = D5;
-    butStart = D4;
+    but0 = D0;
+    but1 = D1;
+    but2 = D2;
+    but3 = D3;
+    but4 = D4;
+    but5 = D5;
+    but6 = D6;
+    but7 = D7;
+    but8 = D8;
+    but9 = A0;
+    butTime = A1;
+    butPower = A2;
+    butStop = A3;
+    butStart = A4;
     
     // Configure the pins to be outputs
     pinMode(but0, OUTPUT);
-  //  pinMode(but1, OUTPUT);
- //   pinMode(but2, OUTPUT);
+    pinMode(but1, OUTPUT);
+    pinMode(but2, OUTPUT);
     pinMode(but3, OUTPUT);
-/*    pinMode(but4, OUTPUT);
+    pinMode(but4, OUTPUT);
     pinMode(but5, OUTPUT);
     pinMode(but6, OUTPUT);
     pinMode(but7, OUTPUT);
-    pinMode(but8, OUTPUT);*/
+    pinMode(but8, OUTPUT);
     pinMode(but9, OUTPUT);
     pinMode(butTime, OUTPUT);
     pinMode(butPower, OUTPUT);
@@ -48,14 +48,14 @@ void setup()
     
     // Initialize all outputs to be off
     digitalWrite(but0, LOW);
-  //  digitalWrite(but1, LOW);
-   // digitalWrite(but2, LOW);
+    digitalWrite(but1, LOW);
+    digitalWrite(but2, LOW);
     digitalWrite(but3, LOW);
-  /*  digitalWrite(but4, LOW);
+    digitalWrite(but4, LOW);
     digitalWrite(but5, LOW);
     digitalWrite(but6, LOW);
     digitalWrite(but7, LOW);
-    digitalWrite(but8, LOW);*/
+    digitalWrite(but8, LOW);
     digitalWrite(but9, LOW);
     digitalWrite(butTime, LOW);
     digitalWrite(butPower, LOW);
@@ -85,9 +85,7 @@ int sendInstr(String rawCommands)
     splitArgStringToArray(rawCommands, commands, ',');
     for(unsigned int i=0;i<arraySize(commands);i++){
         String cmd = commands[i];
-        if(cmd.charAt(0) == '3')
-            pressButton("3");
-        else if (cmd.equals("start"))
+        if (cmd.equals("start"))
             pressButton("start");
         else if (cmd.equals("stop"))
             pressButton("stop");
