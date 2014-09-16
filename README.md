@@ -1,6 +1,8 @@
 BuzzFood
 ========
 
+Created for WUHack 2014. See our [ChallengePost](http://challengepost.com/software/buzzfood).
+
 Buzzfood is a smart microwave designed to make cooking anything as simple as making popcorn. Microwaves, despite their simplicity are almost never used as effectively as they can be. People, rarely adjust the temperature setting, risk burning themselves on over-powered microwaves, and accept the subpar results they produce.
 
 We believe that a smart microwave can be a revolution in making food by allowing complex cooking without any hassle. Users simply scan the barcode of their product, follow the step by step instructions, and put their food in to cook. No tiny labels, no frozen insides.
